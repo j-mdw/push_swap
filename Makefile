@@ -4,7 +4,8 @@ CHECK_DIR_C = src_checker/
 
 CHECK_DIR_O = obj_checker/
 
-CHECK_FILES_C = main.c
+CHECK_FILES_C = main.c init_param.c fatal.c \
+				input_isintarr.c
 
 CHECK_FILES_O = $(addprefix $(CHECK_DIR_O), ${CHECK_FILES_C:c=o})
 

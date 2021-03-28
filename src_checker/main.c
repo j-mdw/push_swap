@@ -3,65 +3,55 @@
 // int
 // 	is_sort(int *arr, int len);
 
-typedef struct	s_check_param {
-	int *arr_a;
-	int *arr_b;
-	int len_a;
-}				t_check_param;
-
 void
-	fatal(t_check_param *param, char *error_msg)
+	swap_top(t_stack *stack)
 {
-	free(param->arr_a);
-	free(param->arr_b);
-	dprintf(STDERR_FILENO, "Error: %s\n", error_msg);
-	exit(EXIT_FAILURE);
-}
+	int *arr;
+	int store;
 
-int
-	input_isintarr(int len, char **arr)
-{
-	int i;
-
-	i = 0;
-	while (i < len)
+	arr = stack->stack;
+	if ((stack->bottom - stack->top) > 1)
 	{
-		// printf("%s\n", arr[i]);
-		if (!ft_isnumber(arr[i]))
-			return (i);
-		i++;
+		store = arr[stack->top];
+		arr[stack->top] = arr[stack->top + 1];
+		arr[stack->top + 1] = store;
 	}
-	return (-1);
 }
 
 void
-	init_param(t_check_param *param, char **input, int len)
+	exec_instructions(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
-	int overflow;
+	char	buf[4];
+	int		ret;
 
-	param->len_a = len;
-	param->arr_b = NULL;
-	if (!(param->arr_a = (int *)malloc(sizeof(int) * len)))
-		fatal(param, "Malloc error");
-	if (!(param->arr_b = (int *)malloc(sizeof(int) * len)))
-		fatal(param, "Malloc error");
-	i = 0;
-	while (i < len)
+	while ((ret = read(STDOUT_FILENO, buf, 3)) == 3)
 	{
-		param->arr_a[i] = ft_atoi_overflow(input[i], &overflow);
-		if (overflow == 1)
-			fatal(param, "Input larger than INT");
-		i++;
+		if (buf[2] != '\n' && (ret += read(STDOUT_FILENO, &buf[3], 1)) != 4)
+			fatal(stack_a, stack_b, "Unknown instruction");
+		buf[ret - 1] = '\0';
+		if (ft_strcmp(buf, "sa"))
+			swap_top(stack_a);
+		else if (ft_strcmp(buf, "sb"))
+			swap_top(stack_b);
+		else if (ft_strcmp(buf, "ss"))
+		{
+			swap_top(stack_a);
+			swap_top(stack_b);
+		}
 	}
-	ft_putintarr(param->arr_a, len);
 }
+	
+	// read
+	// parse
+	// exec
+
 
 int
 	main(int ac, char **av)
 {
-	t_check_param	param;
-	int				ret;
+	t_stack	stack_a;
+	t_stack	stack_b;
+	int		ret;
 
 	av++;
 	if (ac <= 1)
@@ -70,7 +60,9 @@ int
 		dprintf(STDERR_FILENO, "Error: Input '%s': not a number\n", av[ret]);
 	else
 	{
-		init_param(&param, av, ac - 1);
+		init_param(&stack_a, &stack_b, av, ac - 1);
+		// Check doublons?
+		// exec_instructions(&stack_a, &stack_b);
 		return (EXIT_SUCCESS);
 	}
 	return (EXIT_FAILURE);

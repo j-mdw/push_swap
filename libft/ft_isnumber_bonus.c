@@ -8,6 +8,8 @@ int
 
     len = ft_strlen(s);
     i = 0;
+    if (s[i] == '-' || s[i] == '+')
+        i++;
     while (ft_isdigit(s[i]))
         i++;
     if (i == len)
