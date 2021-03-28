@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+#include <limits.h>
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -87,6 +88,7 @@ void			ft_list_remove_if(t_list **begin_list, void *data_ref,
 	void (*free_fct)(void *));
 int				ft_isblank(int c);
 t_list			*ft_lstfind(t_list *begin, void *content);
-
-
+int				ft_isnumber(char *s);
+int				ft_atoi_overflow(const char *str, int *overflow);
+void			ft_putintarr(int *arr, int len);
 #endif
