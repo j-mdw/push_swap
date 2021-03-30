@@ -12,20 +12,20 @@ void
 		fatal(stack_a, stack_b, "Malloc error");
 	if (!stack_init(stack_b, size))
 		fatal(stack_a, stack_b, "Malloc error");
-	i = 0;
-	while (i < size)
+	i = size - 1;
+	while (i >= 0)
 	{
 		stack_push(stack_a, ft_atoi_overflow(input[i], &overflow));
 		if (overflow == 1)
 			fatal(stack_a, stack_b, "Input larger than INT");
-		j = 0;
-		while (j < i)
+		j = size - 1;
+		while (j > i)
 		{
 			if (stack_a->stack[j] == stack_a->stack[i])
 				fatal(stack_a, stack_b, "Multiple occurences of value");
-			j++;
+			j--;
 		}
-		i++;
+		i--;
 	}
 	ft_putintarr(stack_a->stack, size); // TB Deleted
 }

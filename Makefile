@@ -17,7 +17,8 @@ PSWAP_DIR_C = src_pushswap/
 
 PSWAP_DIR_O = obj_pushswap/
 
-PSWAP_FILES_C = main.c
+PSWAP_FILES_C = main.c \
+				dyn_iarray_add.c dyn_iarray_init.c
 
 PSWAP_FILES_O = $(addprefix $(PSWAP_DIR_O), $(PSWAP_FILES_C:c=o))
 
