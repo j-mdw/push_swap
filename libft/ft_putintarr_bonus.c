@@ -5,8 +5,12 @@ void
 {
     int i;
 
-    i = 0;
-    while (i < len)
-        printf("|%d", arr[i++]);
-    printf("|\n");
+    if (len != 0)
+    {
+        i = 0;
+        while (i < len)
+            printf("|%d", arr[i++]);
+        printf("|\n");
+    }
+    printf("\n");
 }

@@ -4,8 +4,8 @@ CHECK_DIR_C = src_checker/
 
 CHECK_DIR_O = obj_checker/
 
-CHECK_FILES_C = main.c input_isintarr.c \
-				
+CHECK_FILES_C = main.c stack_ab_init.c stack_ab_fatal.c input_isintarr.c \
+				stack_push.c stack_pop.c stack_swap_top_two.c stack_rotate_up.c stack_print.c stack_init.c stack_rotate_down.c
 
 CHECK_FILES_O = $(addprefix $(CHECK_DIR_O), ${CHECK_FILES_C:c=o})
 
@@ -19,22 +19,11 @@ PSWAP_DIR_O = obj_pushswap/
 
 PSWAP_FILES_C = main.c \
 				dyn_iarray_add.c dyn_iarray_init.c \
-				ps_bubble_sort.c \
-				ps_fatal.c
+				ps_bubble_sort.c stack_ab_init.c
 
 PSWAP_FILES_O = $(addprefix $(PSWAP_DIR_O), $(PSWAP_FILES_C:c=o))
 
 PSWAP_EXE = push_swap
-
-###
-
-STACK_DIR_C = src_stack/
-
-STACK_DIR_O = obj_stack/
-
-STACK_FILES_C = stack_push.c stack_pop.c stack_swap_top_two.c stack_rotate_up.c stack_print.c stack_init.c stack_rotate_down.c stack_ab_init.c stack_ab_fatal.c 
-
-STACK_FILES_O = $(addprefix $(STACK_DIR_O), $(STACK_FILES_C:c=o))
 
 H_FILE = push_swap.h
 
@@ -55,19 +44,16 @@ all: $(NAME)
 
 $(NAME): $(CHECK_EXE) $(PSWAP_EXE)
 
-$(CHECK_EXE): $(CHECK_FILES_O) $(STACK_FILES_O) $(LIBFT)
+$(CHECK_EXE): $(CHECK_FILES_O) $(LIBFT)
 	$(CC) $^ -o $@
 
 $(CHECK_DIR_O)%.o: $(CHECK_DIR_C)%.c $(H_FILE)
 	$(CC) $(C_FLAGS) -c $< -o $@
 
-$(PSWAP_EXE): $(PSWAP_FILES_O) $(STACK_FILES_O) $(LIBFT)
+$(PSWAP_EXE): $(PSWAP_FILES_O) $(LIBFT)
 	$(CC) $^ -o $@
 
 $(PSWAP_DIR_O)%.o: $(PSWAP_DIR_C)%.c $(H_FILE)
-	$(CC) $(C_FLAGS) -c $< -o $@
-
-$(STACK_DIR_O)%.o: $(STACK_DIR_C)%.c $(H_FILE)
 	$(CC) $(C_FLAGS) -c $< -o $@
 
 $(LIBFT):
@@ -76,7 +62,6 @@ $(LIBFT):
 clean:
 	$(RM) $(CHECK_FILES_O)
 	$(RM) $(PSWAP_FILES_O)
-	$(RM) $(STACK_FILES_O)
 	make --directory=$(LIBFT_DIR) clean
 
 fclean: clean

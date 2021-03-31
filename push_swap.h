@@ -43,26 +43,41 @@ typedef struct	s_check_param {
 	t_stack *stack_b;
 }				t_check_param;
 
+typedef struct	s_param {
+	t_dyn_iarr	*instruct;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+}				t_param;
+
 /*
-CHECKER
+** CHECKER
 */
-void    init_param(t_stack *stack_a, t_stack *stack_b, char **input, int len);
-void    fatal(t_stack *stack_a, t_stack *stack_b, char *error_msg);
+
 int     input_isintarr(int len, char **arr);
 
 /*
-STACK
+** STACK
 */
 void	stack_push(t_stack *stack, int val);
 int		stack_pop(t_stack *stack);
 void	stack_swap_top_two(t_stack *stack);
 void	stack_rotate_up(t_stack *stack);
 void	stack_print(t_stack *stack);
-int		stack_init(t_stack *stack, int size);
+int		stack_init(t_stack *stack, int size, int ref);
 void	stack_rotate_down(t_stack *stack);
+void    stack_ab_init(t_stack *stack_a, t_stack *stack_b, char **input, int len);
+void    stack_ab_fatal(t_stack *stack_a, t_stack *stack_b, char *error_msg);
 
 /*
-DYNAMIC INT ARR
+** DYNAMIC INT ARR
 */
+int		dyn_iarray_init(t_dyn_iarr *dyn_arr, int size);
 int		dyn_iarray_add(t_dyn_iarr *dyn_arr, int val);
+
+/*
+** PUSH SWAP PROGRAM
+*/
+void	ps_fatal(t_param *param, char *error_msg);
+int		ps_bubble_sort(t_param *param);
+
 #endif

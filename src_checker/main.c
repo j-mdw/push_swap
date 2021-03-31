@@ -24,7 +24,7 @@ void
 	while ((ret = read(STDOUT_FILENO, buf, 3)) == 3)
 	{
 		if (buf[2] != '\n' && (ret += read(STDOUT_FILENO, &buf[3], 1)) != 4)
-			fatal(stack_a, stack_b, "Unknown instruction");
+			stack_ab_fatal(stack_a, stack_b, "Unknown instruction");
 		buf[ret - 1] = '\0';
 		if (!ft_strcmp(buf, "sa"))
 			stack_swap_top_two(stack_a);
@@ -58,14 +58,14 @@ void
 			stack_rotate_down(stack_b);
 		}
 		else
-			fatal(stack_a, stack_b, "Unknown instruction");
+			stack_ab_fatal(stack_a, stack_b, "Unknown instruction");
 		printf("Stack A:\n");
 		stack_print(stack_a);
 		printf("Stack B:\n");
 		stack_print(stack_b);
 	}
 	if (ret != 0)
-		fatal(stack_a, stack_b, "Unknown instruction");
+		stack_ab_fatal(stack_a, stack_b, "Unknown instruction");
 }
 
 int
@@ -82,7 +82,7 @@ int
 		dprintf(STDERR_FILENO, "Error: Input '%s': not a number\n", av[ret]);
 	else
 	{
-		init_param(&stack_a, &stack_b, av, ac - 1);
+		stack_ab_init(&stack_a, &stack_b, av, ac - 1);
 		// Check doublons
 		stack_print(&stack_a);
 		exec_instructions(&stack_a, &stack_b);

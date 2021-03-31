@@ -26,6 +26,7 @@ int
         free(dyn_arr->arr);
         dyn_arr->arr = arr_cpy;
     }
-    dyn_arr->arr[dyn_arr->max_i] = val;
     dyn_arr->max_i++;
+    dyn_arr->arr[dyn_arr->max_i] = val;
+    return (1);
 }
