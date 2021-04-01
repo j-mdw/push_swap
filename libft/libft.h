@@ -91,5 +91,6 @@ t_list			*ft_lstfind(t_list *begin, void *content);
 int				ft_isnumber(char *s);
 int				ft_atoi_overflow(const char *str, int *overflow);
 void			ft_putintarr(int *arr, int len);
-int				*ft_intarr_cpy(int *arr, int len);
+int				*ft_intarr_dup(int *arr, int len);
+int				ft_intarr_min(int *arr, int len);
 #endif

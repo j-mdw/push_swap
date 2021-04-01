@@ -1,8 +1,5 @@
 #include "push_swap.h"
 
-// int
-// 	is_sort(int *arr, int len);
-
 void
 	stack_push_from(t_stack *stack1, t_stack *stack2)
 {
@@ -15,15 +12,17 @@ void
 	}
 }
 
-void
-	exec_instructions(t_stack *stack_a, t_stack *stack_b)
+int
+	exec_instructions(t_stack *stack_a, t_stack *stack_b, int flag)
 {
 	char	buf[4];
 	int		ret;
+	int		count;
 
-	while ((ret = read(STDOUT_FILENO, buf, 3)) == 3)
+	count = 0;
+	while ((ret = read(STDIN_FILENO, buf, 3)) == 3)
 	{
-		if (buf[2] != '\n' && (ret += read(STDOUT_FILENO, &buf[3], 1)) != 4)
+		if (buf[2] != '\n' && (ret += read(STDIN_FILENO, &buf[3], 1)) != 4)
 			stack_ab_fatal(stack_a, stack_b, "Unknown instruction");
 		buf[ret - 1] = '\0';
 		if (!ft_strcmp(buf, "sa"))
@@ -59,13 +58,33 @@ void
 		}
 		else
 			stack_ab_fatal(stack_a, stack_b, "Unknown instruction");
-		printf("Stack A:\n");
-		stack_print(stack_a);
-		printf("Stack B:\n");
-		stack_print(stack_b);
+		if (flag == 1)
+		{	
+			printf("Stack A:\n");
+			stack_print(stack_a);
+			printf("Stack B:\n");
+			stack_print(stack_b);
+		}
+		count++;
 	}
 	if (ret != 0)
 		stack_ab_fatal(stack_a, stack_b, "Unknown instruction");
+	return (count);
+}
+
+int
+	ft_isintarr_sort(int *arr, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len - 1)
+	{
+		if (arr[i] > arr[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int
@@ -74,18 +93,36 @@ int
 	t_stack	stack_a;
 	t_stack	stack_b;
 	int		ret;
+	int		flag;
+	int		count;
 
 	av++;
+	flag = 0;
 	if (ac <= 1)
+	{
 		dprintf(STDERR_FILENO, "Error - No input\n");
-	else if ((ret = input_isintarr(ac - 1, av)) != -1)
+		return (EXIT_FAILURE);
+	}
+	if (!ft_strcmp(*av, V_FLAG))
+	{
+		flag |= 1;
+		av++;
+		ac--;
+	}
+	if ((ret = input_isintarr(ac - 1, av)) != -1)
 		dprintf(STDERR_FILENO, "Error: Input '%s': not a number\n", av[ret]);
 	else
 	{
 		stack_ab_init(&stack_a, &stack_b, av, ac - 1);
-		// Check doublons
+		stack_print(&stack_a); //To delete
+		count = exec_instructions(&stack_a, &stack_b, flag);
+		printf("Nb. of instructions: %d\n", count);
+		printf("Stack size: %d\nStack top index: %d\nStack bottom index: %d\n", stack_a.bottom - stack_a.top, stack_a.top, stack_a.bottom);
 		stack_print(&stack_a);
-		exec_instructions(&stack_a, &stack_b);
+		if (ft_isintarr_sort(&stack_a.stack[stack_a.top], stack_a.bottom - stack_a.top))
+			printf("OK\n");
+		else
+			printf("KO\n");
 		return (EXIT_SUCCESS);
 	}
 	return (EXIT_FAILURE);

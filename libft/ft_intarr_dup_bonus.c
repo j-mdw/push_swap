@@ -1,7 +1,7 @@
 #include "libft.h"
 
 int
-    *ft_intarr_cpy(int *arr, int len)
+    *ft_intarr_dup(int *arr, int len)
 {
     int *arr_cpy;
     int i;

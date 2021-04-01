@@ -9,6 +9,8 @@
 #include "libft.h"
 #include <limits.h>
 
+#define V_FLAG "-v"
+
 #define SWAP_A 0
 #define SWAP_B 1
 #define SWAP_AB 2
@@ -22,7 +24,7 @@
 #define RD_AB 10
 
 #define STACK_A 0
-#define SATCK_B 1
+#define STACK_B 1
 
 typedef struct	s_stack {
 	int	ref;
@@ -78,6 +80,6 @@ int		dyn_iarray_add(t_dyn_iarr *dyn_arr, int val);
 ** PUSH SWAP PROGRAM
 */
 void	ps_fatal(t_param *param, char *error_msg);
-int		ps_bubble_sort(t_param *param);
+void	ps_bubble_sort(t_param *param);
 
 #endif

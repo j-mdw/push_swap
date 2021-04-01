@@ -10,7 +10,7 @@ void
 	stack_b->stack = NULL;
 	if (!stack_init(stack_a, size, STACK_A))
 		stack_ab_fatal(stack_a, stack_b, "Malloc error");
-	if (!stack_init(stack_b, size, SATCK_B))
+	if (!stack_init(stack_b, size, STACK_B))
 		stack_ab_fatal(stack_a, stack_b, "Malloc error");
 	i = size - 1;
 	while (i >= 0)
@@ -27,5 +27,5 @@ void
 		}
 		i--;
 	}
-	ft_putintarr(stack_a->stack, size); // TB Deleted
+	// ft_putintarr(stack_a->stack, size); // TB Deleted
 }
