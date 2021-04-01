@@ -8,8 +8,7 @@ int
 
     if (dyn_arr->max_i == dyn_arr->size - 1)
     {
-
-        if (dyn_arr->size== INT_MAX)
+        if (dyn_arr->size == INT_MAX)
             return (-1);
         else if (dyn_arr->size * 2 > INT_MAX)
             dyn_arr->size = INT_MAX;
