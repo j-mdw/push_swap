@@ -20,7 +20,8 @@ PSWAP_DIR_O = obj_pushswap/
 PSWAP_FILES_C = main.c \
 				dyn_iarray_add.c dyn_iarray_init.c \
 				ps_bubble_sort.c \
-				ps_fatal.c
+				ps_fatal.c \
+				ps_are_elem_sbs.c ps_rotate_up.c ps_rotate_down.c ps_rotate_top.c ps_push_a.c ps_push_b.c ps_swap.c ps_swap_top.c
 
 PSWAP_FILES_O = $(addprefix $(PSWAP_DIR_O), $(PSWAP_FILES_C:c=o))
 
@@ -32,7 +33,7 @@ STACK_DIR_C = src_stack/
 
 STACK_DIR_O = obj_stack/
 
-STACK_FILES_C = stack_push.c stack_pop.c stack_swap_top_two.c stack_rotate_up.c stack_print.c stack_init.c stack_rotate_down.c stack_ab_init.c stack_ab_fatal.c 
+STACK_FILES_C = stack_push.c stack_pop.c stack_swap_top_two.c stack_rotate_up.c stack_print.c stack_init.c stack_rotate_down.c stack_ab_init.c stack_ab_fatal.c stack_get_index.c
 
 STACK_FILES_O = $(addprefix $(STACK_DIR_O), $(STACK_FILES_C:c=o))
 

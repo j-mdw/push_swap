@@ -9,6 +9,8 @@
 #include "libft.h"
 #include <limits.h>
 
+#define SORT_FUNC_COUNT 2
+
 #define V_FLAG "-v"
 
 #define SWAP_A 0
@@ -47,8 +49,10 @@ typedef struct	s_check_param {
 
 typedef struct	s_param {
 	t_dyn_iarr	*instruct;
+	t_dyn_iarr	*min_instruct;
 	t_stack		*stack_a;
 	t_stack		*stack_b;
+	int			*input;
 }				t_param;
 
 /*
@@ -81,5 +85,15 @@ int		dyn_iarray_add(t_dyn_iarr *dyn_arr, int val);
 */
 void	ps_fatal(t_param *param, char *error_msg);
 void	ps_bubble_sort(t_param *param);
+void	ps_bubble_sort_v2(t_param *param);
 
+int		ps_are_elem_sbs(t_stack *stack, int index1, int index2);
+void	ps_rotate_up(t_stack *stack, t_dyn_iarr *instruct);
+void	ps_rotate_down(t_stack *stack, t_dyn_iarr *instruct);
+void	ps_rotate_top(t_stack *stack, t_dyn_iarr *instruct, int index);
+void	ps_push_a(t_stack *stack_a, t_stack *stack_b, t_dyn_iarr *instruct);
+void	ps_push_b(t_stack *stack_a, t_stack *stack_b, t_dyn_iarr *instruct);
+int		ps_swap(t_stack *stack, t_dyn_iarr *instruct, int index1, int index2);
+void	ps_swap_top(t_stack *stack, t_dyn_iarr *instruct);
+int		stack_get_index(t_stack *stack, int val);
 #endif

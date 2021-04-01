@@ -93,4 +93,6 @@ int				ft_atoi_overflow(const char *str, int *overflow);
 void			ft_putintarr(int *arr, int len);
 int				*ft_intarr_dup(int *arr, int len);
 int				ft_intarr_min(int *arr, int len);
+void			ft_swap_int(int *arr, int i1, int i2);
+
 #endif
