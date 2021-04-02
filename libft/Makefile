@@ -30,7 +30,7 @@ ft_free_strarr_bonus.c ft_free_strnarr_bonus.c ft_isblank_bonus.c  \
 ft_lstfind_bonus.c  ft_list_remove_if_bonus.c  ft_putstrarr_bonus.c  \
 ft_strcmp_bonus.c  ft_strcpy_bonus.c  ft_strfind_bonus.c ft_isnumber_bonus.c \
 ft_atoi_overflow_bonus.c ft_putintarr_bonus.c ft_intarr_dup_bonus.c \
-ft_intarr_min_bonus.c ft_swap_int_bonus.c
+ft_intarr_min_bonus.c ft_swap_int_bonus.c ft_isintarr_sort_bonus.c
 
 REG_OBJ_FILES := ${REG_SRC_FILES:c=o}
 

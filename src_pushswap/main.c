@@ -39,10 +39,9 @@ int
 	i = 0;
 	while (i < SORT_FUNC_COUNT)
 	{
-		if(!ps_sort_stack(&param, ac - 1, sort_func[i]))
-			ps_fatal(&param, "Sort_stack returned error");
+		ps_sort_stack(&param, ac - 1, sort_func[i]);
 		// printf("Algo result (instructions): %d\n", param.instruct->max_i + 1);
-		if (!param.min_instruct->arr || param.min_instruct->max_i > param.instruct->max_i)
+		if (!min_instruct.arr || min_instruct.max_i > instruct.max_i)
 		{	
 			if (param.min_instruct->arr)
 				free(param.min_instruct->arr);
@@ -58,7 +57,6 @@ int
 	}
 	ps_print_instruct(&min_instruct);
 	free(min_instruct.arr);
-
 	return (EXIT_SUCCESS);
 }
  // While reading the instructions and writting them to stdout, if a swap_a is followed by a swap_b (or the other way around), write a swap_ab instead

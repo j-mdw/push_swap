@@ -1,17 +1,20 @@
 NAME = push_swap_42
 
+### CHECKER FILES
+
 CHECK_DIR_C = src_checker/
 
 CHECK_DIR_O = obj_checker/
 
-CHECK_FILES_C = main.c input_isintarr.c \
+CHECK_FILES_C = main.c input_isintarr.c exec_instructions.c\
+				stack_instruct_1.c stack_instruct_2.c stack_instruct_3.c
 				
 
 CHECK_FILES_O = $(addprefix $(CHECK_DIR_O), ${CHECK_FILES_C:c=o})
 
 CHECK_EXE = checker
 
-###
+### PUSHSWAP FILES
 
 PSWAP_DIR_C = src_pushswap/
 
@@ -28,7 +31,7 @@ PSWAP_FILES_O = $(addprefix $(PSWAP_DIR_O), $(PSWAP_FILES_C:c=o))
 
 PSWAP_EXE = push_swap
 
-###
+### STACK FILES
 
 STACK_DIR_C = src_stack/
 
@@ -37,6 +40,8 @@ STACK_DIR_O = obj_stack/
 STACK_FILES_C = stack_push.c stack_pop.c stack_swap_top_two.c stack_rotate_up.c stack_print.c stack_init.c stack_rotate_down.c stack_ab_init.c stack_ab_fatal.c stack_get_index.c stack_len.c stack_issort.c stack_ab_print.c
 
 STACK_FILES_O = $(addprefix $(STACK_DIR_O), $(STACK_FILES_C:c=o))
+
+### GENERAL
 
 H_FILE = push_swap.h
 

@@ -94,5 +94,5 @@ void			ft_putintarr(int *arr, int len);
 int				*ft_intarr_dup(int *arr, int len);
 int				ft_intarr_min(int *arr, int len);
 void			ft_swap_int(int *arr, int i1, int i2);
-
+int				ft_isintarr_sort(int *arr, int len);
 #endif

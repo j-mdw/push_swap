@@ -13,6 +13,7 @@
 
 #define V_FLAG "-v"
 
+#define AVAIL_INSTRUCT 11
 #define SWAP_A 0
 #define SWAP_B 1
 #define SWAP_AB 2
@@ -56,12 +57,29 @@ typedef struct	s_param {
 
 typedef void (*t_sort_func)(t_param *param);
 
+typedef	struct	s_stack_func {
+	char	*name;
+	void	(*stack_func)(t_stack *stack_a, t_stack *stack_b);
+}				t_stack_func;
+
 /*
 ** CHECKER
 */
 
-int     input_isintarr(int len, char **arr);
-
+int     		input_isintarr(int len, char **arr);
+void			exec_instructions(t_stack *stack_a, t_stack *stack_b, int flag);
+void			swap_a(t_stack *stack_a, t_stack *stack_b);
+void			swap_b(t_stack *stack_a, t_stack *stack_b);
+void			swap_ab(t_stack *stack_a, t_stack *stack_b);
+void			push_a(t_stack *stack_a, t_stack *stack_b);
+void			push_b(t_stack *stack_a, t_stack *stack_b);
+void			rotate_a(t_stack *stack_a, t_stack *stack_b);
+void			rotate_b(t_stack *stack_a, t_stack *stack_b);
+void			rotate_ab(t_stack *stack_a, t_stack *stack_b);
+void			rrotate_a(t_stack *stack_a, t_stack *stack_b);
+void			rrotate_b(t_stack *stack_a, t_stack *stack_b);
+void			rrotate_ab(t_stack *stack_a, t_stack *stack_b);
+t_stack_func	*set_stack_func_arr();
 /*
 ** STACK
 */
@@ -105,7 +123,7 @@ int		ps_swap(t_stack *stack, t_dyn_iarr *instruct, int index1, int index2);
 void	ps_swap_top(t_stack *stack, t_dyn_iarr *instruct);
 int		stack_get_index(t_stack *stack, int val);
 int		*parse_iarr_input(char **input, int size);
-int		ps_sort_stack(t_param *param, int len, void (*ps_sort)(t_param *));
+void	ps_sort_stack(t_param *param, int len, void (*ps_sort)(t_param *));
 void	ps_print_instruct(t_dyn_iarr *instruct);
 
 #endif
