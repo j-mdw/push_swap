@@ -13,18 +13,6 @@ void
 }
 
 int
-	exec_instruct()
-{
-	static int arr[] =
-	{ ""}
-}
-
-typedef	struct s_stack_func {
-	char	*name;
-	void	(*stack_func)(t_stack *stack_a, t_stack *stack_b)
-}
-
-int
 	exec_instructions(t_stack *stack_a, t_stack *stack_b, int flag)
 {
 	char	buf[4];

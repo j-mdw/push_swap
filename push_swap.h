@@ -35,7 +35,6 @@ typedef struct	s_stack {
 	int *stack;
 }				t_stack;
 
-
 typedef struct  t_dyn_iarray {
     int     max_i;
     int     size;
@@ -54,6 +53,8 @@ typedef struct	s_param {
 	t_stack		*stack_b;
 	int			*input;
 }				t_param;
+
+typedef void (*t_sort_func)(t_param *param);
 
 /*
 ** CHECKER
@@ -76,7 +77,7 @@ void    stack_ab_init(t_stack *stack_a, t_stack *stack_b, char **input, int len)
 void    stack_ab_fatal(t_stack *stack_a, t_stack *stack_b, char *error_msg);
 int		stack_len(t_stack *stack);
 int		stack_issort(t_stack *stack);
-
+void	stack_ab_print(t_stack *stack_a, t_stack *stack_b);
 /*
 ** DYNAMIC INT ARR
 */
@@ -103,5 +104,8 @@ void	ps_push_b(t_stack *stack_a, t_stack *stack_b, t_dyn_iarr *instruct);
 int		ps_swap(t_stack *stack, t_dyn_iarr *instruct, int index1, int index2);
 void	ps_swap_top(t_stack *stack, t_dyn_iarr *instruct);
 int		stack_get_index(t_stack *stack, int val);
+int		*parse_iarr_input(char **input, int size);
+int		ps_sort_stack(t_param *param, int len, void (*ps_sort)(t_param *));
+void	ps_print_instruct(t_dyn_iarr *instruct);
 
 #endif

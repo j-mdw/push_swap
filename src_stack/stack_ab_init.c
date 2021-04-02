@@ -27,5 +27,4 @@ void
 		}
 		i--;
 	}
-	// ft_putintarr(stack_a->stack, size); // TB Deleted
 }

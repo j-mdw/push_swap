@@ -8,7 +8,7 @@ static void
 	arr[ind2] = store;
 }
 
-int
+static int
 	partition(int *arr, int start, int end)
 {
 	int pivot;

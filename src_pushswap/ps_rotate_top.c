@@ -10,7 +10,7 @@ void
     mid = (len / 2) + (len % 2);
     if (index <  mid)
     {
-        while (index-- > 0)
+        while (index-- > stack->top)
             ps_rotate_up(stack, instruct);
     }
     else if (index >= mid)
