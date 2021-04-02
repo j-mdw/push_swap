@@ -9,7 +9,7 @@
 #include "libft.h"
 #include <limits.h>
 
-#define SORT_FUNC_COUNT 2
+#define SORT_FUNC_COUNT 3
 
 #define V_FLAG "-v"
 
@@ -64,6 +64,7 @@ int     input_isintarr(int len, char **arr);
 /*
 ** STACK
 */
+
 void	stack_push(t_stack *stack, int val);
 int		stack_pop(t_stack *stack);
 void	stack_swap_top_two(t_stack *stack);
@@ -73,19 +74,25 @@ int		stack_init(t_stack *stack, int size, int ref);
 void	stack_rotate_down(t_stack *stack);
 void    stack_ab_init(t_stack *stack_a, t_stack *stack_b, char **input, int len);
 void    stack_ab_fatal(t_stack *stack_a, t_stack *stack_b, char *error_msg);
+int		stack_len(t_stack *stack);
+int		stack_issort(t_stack *stack);
 
 /*
 ** DYNAMIC INT ARR
 */
+
 int		dyn_iarray_init(t_dyn_iarr *dyn_arr, int size);
 int		dyn_iarray_add(t_dyn_iarr *dyn_arr, int val);
 
 /*
 ** PUSH SWAP PROGRAM
 */
+
 void	ps_fatal(t_param *param, char *error_msg);
 void	ps_bubble_sort(t_param *param);
 void	ps_bubble_sort_v2(t_param *param);
+void	quick_sort(int *arr, int len);
+void	pushswap_sort(t_param *param);
 
 int		ps_are_elem_sbs(t_stack *stack, int index1, int index2);
 void	ps_rotate_up(t_stack *stack, t_dyn_iarr *instruct);
@@ -96,4 +103,5 @@ void	ps_push_b(t_stack *stack_a, t_stack *stack_b, t_dyn_iarr *instruct);
 int		ps_swap(t_stack *stack, t_dyn_iarr *instruct, int index1, int index2);
 void	ps_swap_top(t_stack *stack, t_dyn_iarr *instruct);
 int		stack_get_index(t_stack *stack, int val);
+
 #endif

@@ -9,9 +9,12 @@ int
     while (i < stack->bottom)
     {
         if (stack->stack[i] == val)
+        {
+            printf("Value found: %d\n", val); //To be deleted
             return (i);
+        }
         i++;
     }
-    printf("Value not found\n"); //To be deleted
+    printf("Value not found: %d\n", val); //To be deleted
     return (0);
 }

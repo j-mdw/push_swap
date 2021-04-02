@@ -82,6 +82,7 @@ void
 {
 	sort_func[0] = ps_bubble_sort;
 	sort_func[1] = ps_bubble_sort_v2;
+	sort_func[2] = pushswap_sort;
 }
 
 void
@@ -115,10 +116,9 @@ int
 	i = 0;
 	while (i < SORT_FUNC_COUNT)
 	{
-		printf("Before algo\n");
 		if(!sort_stack(&param, ac - 1, sort_func[i]))
 			ps_fatal(&param, "Sort_stack returned error");
-		printf("Algo result (instructions): %d\n", param.instruct->max_i + 1);
+		// printf("Algo result (instructions): %d\n", param.instruct->max_i + 1);
 		if (!param.min_instruct->arr || param.min_instruct->max_i > param.instruct->max_i)
 		{	
 			if (param.min_instruct->arr)
