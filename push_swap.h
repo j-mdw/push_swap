@@ -79,7 +79,8 @@ void			rotate_ab(t_stack *stack_a, t_stack *stack_b);
 void			rrotate_a(t_stack *stack_a, t_stack *stack_b);
 void			rrotate_b(t_stack *stack_a, t_stack *stack_b);
 void			rrotate_ab(t_stack *stack_a, t_stack *stack_b);
-t_stack_func	*set_stack_func_arr();
+t_stack_func	*set_stack_func_arr(void);
+
 /*
 ** STACK
 */
@@ -96,6 +97,7 @@ void    stack_ab_fatal(t_stack *stack_a, t_stack *stack_b, char *error_msg);
 int		stack_len(t_stack *stack);
 int		stack_issort(t_stack *stack);
 void	stack_ab_print(t_stack *stack_a, t_stack *stack_b);
+
 /*
 ** DYNAMIC INT ARR
 */

@@ -6,7 +6,7 @@
 /*   By: jmaydew <jmaydew@student.42.ft>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 21:21:02 by jmaydew           #+#    #+#             */
-/*   Updated: 2020/05/14 18:49:37 by jmaydew          ###   ########.fr       */
+/*   Updated: 2021/04/03 13:49:19 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	{
 		if (((unsigned char *)s)[i] == ((unsigned char)c))
 		{
-			ptr = &((void *)s)[i];
+			ptr = &((unsigned char *)s)[i];
 			return (ptr);
 		}
 		i++;

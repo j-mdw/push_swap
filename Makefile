@@ -7,7 +7,8 @@ CHECK_DIR_C = src_checker/
 CHECK_DIR_O = obj_checker/
 
 CHECK_FILES_C = main.c input_isintarr.c exec_instructions.c\
-				stack_instruct_1.c stack_instruct_2.c stack_instruct_3.c
+				stack_instruct_1.c stack_instruct_2.c stack_instruct_3.c \
+				set_stack_func_arr.c
 				
 
 CHECK_FILES_O = $(addprefix $(CHECK_DIR_O), ${CHECK_FILES_C:c=o})
@@ -20,11 +21,11 @@ PSWAP_DIR_C = src_pushswap/
 
 PSWAP_DIR_O = obj_pushswap/
 
-PSWAP_FILES_C = main.c \
-				dyn_iarray_add.c dyn_iarray_init.c \
-				ps_sort_stack.c ps_bubble_sort.c pushswap_sort.c ps_print_instruct.c\
-				ps_fatal.c \
-				ps_are_elem_sbs.c ps_rotate_up.c ps_rotate_down.c ps_rotate_top.c ps_push_a.c ps_push_b.c ps_swap.c ps_swap_top.c \
+PSWAP_FILES_C = main.c dyn_iarray_add.c dyn_iarray_init.c \
+				ps_sort_stack.c ps_bubble_sort.c pushswap_sort.c \
+				ps_print_instruct.c ps_fatal.c ps_are_elem_sbs.c \
+				ps_rotate_up.c ps_rotate_down.c ps_rotate_top.c \
+				ps_push_a.c ps_push_b.c ps_swap.c ps_swap_top.c \
 				quick_sort.c parse_iarr_input.c
 
 PSWAP_FILES_O = $(addprefix $(PSWAP_DIR_O), $(PSWAP_FILES_C:c=o))
@@ -37,7 +38,11 @@ STACK_DIR_C = src_stack/
 
 STACK_DIR_O = obj_stack/
 
-STACK_FILES_C = stack_push.c stack_pop.c stack_swap_top_two.c stack_rotate_up.c stack_print.c stack_init.c stack_rotate_down.c stack_ab_init.c stack_ab_fatal.c stack_get_index.c stack_len.c stack_issort.c stack_ab_print.c
+STACK_FILES_C = stack_push.c stack_pop.c stack_swap_top_two.c \
+				stack_rotate_up.c stack_print.c stack_init.c \
+				stack_rotate_down.c stack_ab_init.c stack_ab_fatal.c \
+				stack_get_index.c stack_len.c stack_issort.c \
+				stack_ab_print.c
 
 STACK_FILES_O = $(addprefix $(STACK_DIR_O), $(STACK_FILES_C:c=o))
 
@@ -60,7 +65,7 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(CHECK_EXE) $(PSWAP_EXE)
+$(NAME): lib_ft $(CHECK_EXE) $(PSWAP_EXE)
 
 $(CHECK_EXE): $(CHECK_FILES_O) $(STACK_FILES_O) $(LIBFT)
 	$(CC) $^ -o $@
@@ -77,7 +82,7 @@ $(PSWAP_DIR_O)%.o: $(PSWAP_DIR_C)%.c $(H_FILE)
 $(STACK_DIR_O)%.o: $(STACK_DIR_C)%.c $(H_FILE)
 	$(CC) $(C_FLAGS) -c $< -o $@
 
-$(LIBFT):
+lib_ft:
 	make --directory=$(LIBFT_DIR) bonus
 
 clean:

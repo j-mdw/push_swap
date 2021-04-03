@@ -56,6 +56,7 @@ int
 		i++;
 	}
 	ps_print_instruct(&min_instruct);
+	free(param.input);
 	free(min_instruct.arr);
 	return (EXIT_SUCCESS);
 }

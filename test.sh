@@ -1,5 +1,6 @@
 #!/bin/sh
-function do_check()
+
+do_check
 {
 	input="$1"
 
@@ -11,7 +12,7 @@ function do_check()
 	fi
 }
 
-function test_ps()
+test_ps
 {
 	input="$1"
 

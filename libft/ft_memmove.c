@@ -6,7 +6,7 @@
 /*   By: jmaydew <jmaydew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 03:29:49 by jmaydew           #+#    #+#             */
-/*   Updated: 2020/05/15 18:02:55 by jmaydew          ###   ########.fr       */
+/*   Updated: 2021/04/03 13:50:25 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (NULL);
 	while (i < len)
 	{
-		if (&src[i] == &dst[0])
+		if (&((char *)src)[i] == &((char *)dst)[0])
 		{
 			while (len > 0)
 			{

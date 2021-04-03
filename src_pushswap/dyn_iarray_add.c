@@ -3,14 +3,18 @@
 static int
     dyn_iarr_grow(t_dyn_iarr *dyn_arr)
 {
-    int *arr_cpy;
-    int i;
+    int             *arr_cpy;
+    long long int   max;
+    int             i;
 
+    max = dyn_arr->size;
+    max *= 2;
     if (dyn_arr->size == INT_MAX)
         return (0);
-    else if (dyn_arr->size * 2 > INT_MAX)
+    else if (max > INT_MAX)
         dyn_arr->size = INT_MAX;
     else
+        dyn_arr->size *= 2;
     if (!(arr_cpy = (int *)malloc(sizeof(int) * dyn_arr->size)))
         return (0);
     i = 0;
@@ -27,12 +31,9 @@ static int
 int
     dyn_iarray_add(t_dyn_iarr *dyn_arr, int val)
 {
-    int *arr_cpy;
-    int i;
-
     if (dyn_arr->max_i == dyn_arr->size - 1)
     {
-        if (!dyn_iarr_grow(dyn_arr) )
+        if (!dyn_iarr_grow(dyn_arr))
             return (0);
     }
     dyn_arr->max_i++;

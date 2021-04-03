@@ -3,6 +3,8 @@
 void
 	ps_fatal(t_param *param, char *error_msg)
 {
+	if (param->input)
+		free(param->input);
 	if (param->instruct)
 		free(param->instruct->arr);
 	if (param->min_instruct)
