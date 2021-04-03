@@ -5,8 +5,11 @@ void
 {
 	int			i;
 	int			instruct_i;
-	static char *arr[] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", 
-						 "rra", "rrb", "rrr"};
+	static char *arr[] = {
+	"sa", "sb", "ss",
+	"pa", "pb", 
+	"ra", "rb", "rr", 
+	"rra", "rrb", "rrr"};
 
 	i = 0;
 	while (i <= instruct->max_i)

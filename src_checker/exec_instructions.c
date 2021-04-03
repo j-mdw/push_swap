@@ -24,6 +24,8 @@ void
 			}
 			i++;
 		}
+        if (i == AVAIL_INSTRUCT)
+		    stack_ab_fatal(stack_a, stack_b, "Unknown instruction");     
 		if (flag == 1)
 			stack_ab_print(stack_a, stack_b);
 	}
