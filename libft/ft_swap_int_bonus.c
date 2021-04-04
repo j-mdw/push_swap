@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap_int_bonus.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/04 15:33:47 by jmaydew           #+#    #+#             */
+/*   Updated: 2021/04/04 15:33:50 by jmaydew          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void
-    ft_swap_int(int *arr, int i1, int i2)
+	ft_swap_int(int *arr, int i1, int i2)
 {
-    int store;
+	int store;
 
-    if (arr)
-    {
-        store = arr[i1];
-        arr[i1] = arr[i2];
-        arr[i2] = store;
-    }
+	if (arr)
+	{
+		store = arr[i1];
+		arr[i1] = arr[i2];
+		arr[i2] = store;
+	}
 }

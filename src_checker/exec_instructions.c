@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_instructions.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaydew <jmaydew@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/04 16:37:45 by jmaydew           #+#    #+#             */
+/*   Updated: 2021/04/04 17:11:58 by jmaydew          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void
-	exec_stack_func(t_stack *stack_a, t_stack *stack_b, char *buf, 
+	exec_stack_func(t_stack *stack_a, t_stack *stack_b, char *buf,
 	t_stack_func *stack_func_arr)
 {
 	int i;
-	
+
 	i = 0;
 	while (i < AVAIL_INSTRUCT)
 	{
 		if (!ft_strcmp(buf, (stack_func_arr[i]).name))
 		{
 			(stack_func_arr[i]).stack_func(stack_a, stack_b);
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -26,7 +38,6 @@ void
 	char			buf[4];
 	int				ret;
 	t_stack_func	*stack_func_arr;
-	int				i;
 
 	stack_func_arr = set_stack_func_arr();
 	while ((ret = read(STDIN_FILENO, buf, 3)) == 3)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_ab_init.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/04 16:35:15 by jmaydew           #+#    #+#             */
+/*   Updated: 2021/04/04 16:36:50 by jmaydew          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void
@@ -22,7 +34,8 @@ void
 		while (j > i)
 		{
 			if (stack_a->stack[j] == stack_a->stack[i])
-				stack_ab_fatal(stack_a, stack_b, "Multiple occurences of value");
+				stack_ab_fatal(stack_a, stack_b,
+				"Multiple occurences of value");
 			j--;
 		}
 		i--;

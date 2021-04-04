@@ -1,18 +1,6 @@
 #!/bin/sh
 
-do_check
-{
-	input="$1"
-
-	if (./checker $input);
-	then
-		echo OK
-	else
-		echo KO
-	fi
-}
-
-test_ps
+test_ps()
 {
 	input="$1"
 

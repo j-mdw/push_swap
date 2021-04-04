@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putintarr_bonus.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/04 15:32:08 by jmaydew           #+#    #+#             */
+/*   Updated: 2021/04/04 15:32:10 by jmaydew          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void
-    ft_putintarr(int *arr, int len)
+	ft_putintarr(int *arr, int len)
 {
-    int i;
+	int i;
 
-    if (len != 0)
-    {
-        i = 0;
-        while (i < len)
-            printf("|%d", arr[i++]);
-        printf("|\n");
-    }
-    printf("\n");
+	if (len != 0)
+	{
+		i = 0;
+		while (i < len)
+			printf("|%d", arr[i++]);
+		printf("|\n");
+	}
+	printf("\n");
 }

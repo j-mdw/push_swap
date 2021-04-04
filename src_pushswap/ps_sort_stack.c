@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_sort_stack.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/04 16:41:40 by jmaydew           #+#    #+#             */
+/*   Updated: 2021/04/04 16:42:07 by jmaydew          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void
@@ -17,7 +29,7 @@ void
 	stack_a.top = 0;
 	if (!stack_init(&stack_b, len, STACK_B))
 		ps_fatal(param, "stack init");
-	if (!dyn_iarray_init(param->instruct, len * 2)) //len * 2 TBU eventually
+	if (!dyn_iarray_init(param->instruct, len * 2))
 		ps_fatal(param, "Dyn arr init error");
 	ps_sort(param);
 	free(stack_a.stack);
