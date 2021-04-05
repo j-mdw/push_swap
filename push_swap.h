@@ -21,7 +21,7 @@
 # include "libft.h"
 # include <limits.h>
 
-# define SORT_FUNC_COUNT 3
+# define SORT_FUNC_COUNT 4
 
 # define V_FLAG "-v"
 
@@ -146,5 +146,5 @@ int				*parse_iarr_input(char **input, int size);
 void			ps_sort_stack(t_param *param, int len,
 				void (*ps_sort)(t_param *));
 void			ps_print_instruct(t_dyn_iarr *instruct);
-
+void			magic_sort(t_param *param);
 #endif

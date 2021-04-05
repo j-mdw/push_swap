@@ -18,6 +18,7 @@ static void
 	sort_func[0] = ps_bubble_sort;
 	sort_func[1] = ps_bubble_sort_v2;
 	sort_func[2] = pushswap_sort;
+	sort_func[3] = magic_sort;
 }
 
 static void
