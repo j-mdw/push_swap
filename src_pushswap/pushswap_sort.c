@@ -37,3 +37,43 @@ void
 		ps_push_a(param->stack_a, param->stack_b, param->instruct);
 	free(arr);
 }
+
+int
+	ft_iarr_getindex(int *arr, int len, int val)
+{
+	int i;
+	
+	i = 0;
+	while (i < len)
+	{
+		if (arr[i] == val)
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+void
+	pushswap_sort_v2(t_param *param)
+{
+	int len;
+	int mid;
+	int *arr;
+
+	len = param->stack_a->bottom - param->stack_a->top;
+	mid = len / 2;
+	if (!(arr = ft_intarr_dup(param->stack_a->stack,
+	stack_len(param->stack_a))))
+		ps_fatal(param, "");
+	quick_sort(arr, stack_len(param->stack_a));	
+	while (!stack_issort(param->stack_a))
+	{
+		if (param->stack_a->stack[param->stack_a->top] > param->stack_a->stack[param->stack_a->top + 1]
+		&& ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top + 1]) >= mid)
+			ps_swap_top(param->stack_a, param->instruct);
+		else if (param->stack_a->stack[param->stack_a->top] < param->stack_a->stack[param->stack_a->top + 1]
+		&& ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top + 1]) < mid)
+			ps_swap_top(param->stack_a, param->instruct);
+		ps_rotate_up(param->stack_a, param->instruct);
+	}
+}

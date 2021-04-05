@@ -19,13 +19,13 @@ void
 	int len;
 
 	len = stack->bottom - stack->top;
-	mid = (len / 2) + (len % 2);
-	if (index < mid)
+	mid = (len / 2) + (len % 2);;
+	if ((index - stack->top) < mid)
 	{
 		while (index-- > stack->top)
 			ps_rotate_up(stack, instruct);
 	}
-	else if (index >= mid)
+	else if ((index - stack->top) >= mid)
 	{
 		while (index++ < stack->bottom)
 			ps_rotate_down(stack, instruct);

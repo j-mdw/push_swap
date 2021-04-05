@@ -21,7 +21,7 @@
 # include "libft.h"
 # include <limits.h>
 
-# define SORT_FUNC_COUNT 4
+# define SORT_FUNC_COUNT 5
 
 # define V_FLAG "-v"
 
@@ -129,6 +129,8 @@ void			ps_bubble_sort(t_param *param);
 void			ps_bubble_sort_v2(t_param *param);
 void			quick_sort(int *arr, int len);
 void			pushswap_sort(t_param *param);
+void			pushswap_sort_v2(t_param *param);
+void			magic_quick_sort(t_param *param);
 
 int				ps_are_elem_sbs(t_stack *stack, int index1, int index2);
 void			ps_rotate_up(t_stack *stack, t_dyn_iarr *instruct);
@@ -146,5 +148,5 @@ int				*parse_iarr_input(char **input, int size);
 void			ps_sort_stack(t_param *param, int len,
 				void (*ps_sort)(t_param *));
 void			ps_print_instruct(t_dyn_iarr *instruct);
-void			magic_sort(t_param *param);
+
 #endif
