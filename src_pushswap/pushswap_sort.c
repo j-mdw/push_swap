@@ -59,6 +59,7 @@ void
 	int len;
 	int mid;
 	int *arr;
+	int counter;
 
 	len = param->stack_a->bottom - param->stack_a->top;
 	mid = len / 2;
@@ -66,14 +67,33 @@ void
 	stack_len(param->stack_a))))
 		ps_fatal(param, "");
 	quick_sort(arr, stack_len(param->stack_a));	
+	counter = 0;
 	while (!stack_issort(param->stack_a))
 	{
 		if (param->stack_a->stack[param->stack_a->top] > param->stack_a->stack[param->stack_a->top + 1]
 		&& ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top + 1]) >= mid)
+		{
 			ps_swap_top(param->stack_a, param->instruct);
-		else if (param->stack_a->stack[param->stack_a->top] < param->stack_a->stack[param->stack_a->top + 1]
-		&& ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top + 1]) < mid)
+			mid = len / 2;
+			counter = 0;
+		}
+		else if (param->stack_a->stack[param->stack_a->top] > param->stack_a->stack[param->stack_a->top + 1]
+		&& ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top]) < mid)
+		// && ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top + 1]) < mid)
+		{
 			ps_swap_top(param->stack_a, param->instruct);
+			mid = len / 2;
+			counter = 0;
+		}
+		else if (counter == len)
+		{
+			mid--;
+			counter = 0;
+			ps_rotate_top(param->stack_a, param->instruct, mid - 1 + param->stack_a->top);
+		}
+		if (stack_issort(param->stack_a))
+			break ;
 		ps_rotate_up(param->stack_a, param->instruct);
+		counter++;
 	}
 }

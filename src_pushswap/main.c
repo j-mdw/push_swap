@@ -38,7 +38,7 @@ static void
 	int i;
 
 	i = 0;
-	while (i < SORT_FUNC_COUNT - 1) //REMOOOOOOOVEEEEE THEEEE 1111111111
+	while (i < SORT_FUNC_COUNT)
 	{
 		ps_sort_stack(param, len, sort_func[i]);
 		// printf("Algo result (instructions): %d\n", param->instruct->max_i + 1);
