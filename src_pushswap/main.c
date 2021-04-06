@@ -18,8 +18,8 @@ static void
 	sort_func[0] = ps_bubble_sort;
 	sort_func[1] = ps_bubble_sort_v2;
 	sort_func[2] = pushswap_sort;
-	sort_func[3] = pushswap_sort_v2;
-	sort_func[4] = magic_quick_sort;
+	sort_func[3] = magic_quick_sort;
+	sort_func[4] = pushswap_sort_v2;
 }
 
 static void
@@ -36,9 +36,11 @@ static void
 	get_best_sort(t_param *param, t_sort_func *sort_func, int len)
 {
 	int i;
+	int algo;
 
+	algo = (len > 10) * 1;
 	i = 0;
-	while (i < SORT_FUNC_COUNT)
+	while (i < SORT_FUNC_COUNT - algo)
 	{
 		ps_sort_stack(param, len, sort_func[i]);
 		// printf("Algo result (instructions): %d\n", param->instruct->max_i + 1);

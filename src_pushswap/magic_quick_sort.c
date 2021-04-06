@@ -10,7 +10,6 @@ int
     return (med);
 }
 
-
 int
     partition(t_stack *stack_1, t_stack *stack_2, int len, t_dyn_iarr *instruct)
 {
@@ -18,34 +17,50 @@ int
     int *arr_cpy;
     int i;
     int push_count;
+    int index;
+    int rotcount;
 
-    printf("Len: %d\n", len);
     if (!(arr_cpy = ft_intarr_dup(&(stack_1->stack[stack_1->top]), len)))
         return (0);
-    ft_putintarr(arr_cpy, len);
     med = intarr_median(arr_cpy, len);
-    printf("Med: %d\n", med);
     free(arr_cpy);
     push_count = 0;
-    i = stack_1->top;
-    while (i < (stack_1->top + len))
+    i = 0;
+    rotcount = 0;
+    while (i < len)
     {
-        if (stack_1->ref == STACK_A && stack_1->stack[i] < med)
+        if (stack_1->ref == STACK_A && stack_1->stack[stack_1->top + i] < med)
         {
-            ps_rotate_top(stack_1, instruct, i);
+		    index = stack_1->top + i;
+            while (index-- > stack_1->top)
+            {
+			    ps_rotate_up(stack_1, instruct);
+                len--;
+                rotcount++;
+            }
             ps_push_b(stack_1, stack_2, instruct);
             push_count++;
-            i = stack_1->top - 1;
+            i = -1;
+            len--;
         }
-        else if (stack_1->ref == STACK_B && stack_1->stack[i] >= med)
+        else if (stack_1->ref == STACK_B && stack_1->stack[stack_1->top + i] >= med)
         {
-            ps_rotate_top(stack_1, instruct, i);
-            ps_push_a(stack_1, stack_2, instruct);
+		    index = stack_1->top + i;
+            while (index-- > stack_1->top)
+            {
+			    ps_rotate_up(stack_1, instruct);
+                len--;
+                rotcount++;
+            }
+            ps_push_a(stack_2, stack_1, instruct);
             push_count++;
-            i = stack_1->top - 1;
+            i = -1;
+            len--;
         }
         i++;
     }
+    while (rotcount--)
+        ps_rotate_down(stack_1, instruct);
     return (push_count);
 }
 
@@ -99,6 +114,8 @@ void
 {
     int push_count;
 
+    // stack_ab_print(stack_1, stack_2);
+    // printf("Len: %d\n", len);
     if (stack_1->ref == STACK_A && stack_sub_issort(stack_1, len))
         return ;
     if (stack_1->ref == STACK_B && stack_sub_issort_r(stack_1, len))
@@ -106,7 +123,7 @@ void
         ps_push_a_n(stack_2, stack_1, instruct, len);
         return ;
     }
-    if (stack_len(stack_1) == 2)
+    if (len == 2)
      {
          if (stack_1->ref == STACK_A)
             ps_swap_top(stack_1, instruct);
@@ -118,36 +135,20 @@ void
          return ;
      }
     push_count = partition(stack_1, stack_2, len, instruct);
-    stack_ab_print(stack_1, stack_2);
-    magic_quick_sort_rec(stack_1, stack_2, len - push_count, instruct);
-    magic_quick_sort_rec(stack_2, stack_1, push_count, instruct);
+    if (stack_1->ref == STACK_A)
+    {
+        magic_quick_sort_rec(stack_1, stack_2, len - push_count, instruct);
+        magic_quick_sort_rec(stack_2, stack_1, push_count, instruct);
+    }
+    else
+    {
+        magic_quick_sort_rec(stack_2, stack_1, push_count, instruct);
+        magic_quick_sort_rec(stack_1, stack_2, len - push_count, instruct);
+    }
 }
 
 void
     magic_quick_sort(t_param *param)
 {
-//     int pivot;
-//     int *arr_cpy;
-    // int p = 0;
-    // (void)param;
-
     magic_quick_sort_rec(param->stack_a, param->stack_b, param->stack_a->bottom - param->stack_a->top, param->instruct);
-    stack_ab_print(param->stack_a, param->stack_b);
-    // while (stack_len(param->stack_a) > 2)
-    // {
-    //     if (stack_issort(param->stack_a))
-    //         break;
-    //     if (!partition(param->stack_a, param->stack_b, param->stack_a->top, param->stack_a->bottom, param->instruct))
-    //         ps_fatal(param, "");
-    //     stack_ab_print(param->stack_a, param->stack_b);
-    // }
-//    if (!(arr_cpy = ft_intarr_dup(&(stack_1->stack[stack_1->top]), bottom - top)))
-//         return (-1);
-//     med = intarr_median(arr_cpy, bottom - top);
-//     free(arr_cpy);
-
-//     if ((p = partition(param->stack_a, param->stack_b, param->stack_a->top, param->stack_a->bottom, param->instruct)) <= 0)
-//         ps_fatal(param, "Partition");
-    
-    // printf("Median: %d\n", p);
 } 

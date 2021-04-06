@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+static int
+	shortcut(int *arr)
+{
+	if ((arr[0] == SWAP_A && arr[1] == SWAP_B) ||
+	(arr[0] == SWAP_B && arr[1] == SWAP_A))
+		return (SWAP_AB);
+	else if ((arr[0] == RU_A && arr[1] == RU_B) ||
+	(arr[0] == RU_A && arr[1] == RU_B))
+		return (RU_AB);
+	else if ((arr[0] == RD_A && arr[1] == RD_B) ||
+	(arr[0] == RD_A && arr[1] == RD_B))
+		return (RD_AB);
+	return (0);
+}
+
 void
 	ps_print_instruct(t_dyn_iarr *instruct)
 {
@@ -26,8 +41,16 @@ void
 	i = 0;
 	while (i <= instruct->max_i)
 	{
-		instruct_i = instruct->arr[i];
-		printf("%s\n", arr[instruct_i]);
-		i++;
+		if (i < instruct->max_i && (instruct_i = shortcut(&instruct->arr[i])))
+		{	
+			printf("%s\n", arr[instruct_i]);
+			i += 2;
+		}
+		else
+		{
+			instruct_i = instruct->arr[i];
+			printf("%s\n", arr[instruct_i]);
+			i++;
+		}
 	}
 }
