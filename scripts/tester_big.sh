@@ -1,6 +1,6 @@
 mkdir -p /tmp/push_swap
 rm /tmp/push_swap/*.cnt
-python3 -c "from itertools import permutations as p ; print('\n'.join([ ' '.join(x) for x in p('0123456789', 10)]))" | while read -r line; do
+python3 -c "from itertools import permutations as p ; print('\n'.join([ ' '.join(x) for x in p('0123', 4)]))" | while read -r line; do
 	echo -n '`'$line'`: '
 	echo $(./push_swap $line)
 #	echo $operation

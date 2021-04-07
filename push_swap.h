@@ -132,7 +132,8 @@ void			quick_sort(int *arr, int len);
 void			pushswap_sort(t_param *param);
 void			pushswap_sort_v2(t_param *param);
 void			magic_quick_sort(t_param *param);
-
+int				magic_partition(t_stack *stack_1, t_stack *stack_2,
+				int len, t_dyn_iarr *instruct);
 int				ps_are_elem_sbs(t_stack *stack, int index1, int index2);
 void			ps_rotate_up(t_stack *stack, t_dyn_iarr *instruct);
 void			ps_rotate_down(t_stack *stack, t_dyn_iarr *instruct);
@@ -149,5 +150,6 @@ int				*parse_iarr_input(char **input, int size);
 void			ps_sort_stack(t_param *param, int len,
 				void (*ps_sort)(t_param *));
 void			ps_print_instruct(t_dyn_iarr *instruct);
-
+void			ps_push_a_n(t_stack *stack_a, t_stack *stack_b,
+    			t_dyn_iarr *instruct, int n);
 #endif

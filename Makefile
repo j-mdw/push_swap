@@ -26,7 +26,8 @@ PSWAP_FILES_C = main.c dyn_iarray_add.c dyn_iarray_init.c \
 				ps_print_instruct.c ps_fatal.c ps_are_elem_sbs.c \
 				ps_rotate_up.c ps_rotate_down.c ps_rotate_top.c \
 				ps_push_a.c ps_push_b.c ps_swap.c ps_swap_top.c \
-				quick_sort.c parse_iarr_input.c magic_quick_sort.c
+				quick_sort.c parse_iarr_input.c magic_quick_sort.c \
+				ps_push_a_n.c magic_quick_sort_partition.c
 
 PSWAP_FILES_O = $(addprefix $(PSWAP_DIR_O), $(PSWAP_FILES_C:c=o))
 
