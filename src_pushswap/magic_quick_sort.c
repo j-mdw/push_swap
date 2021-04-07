@@ -71,13 +71,13 @@ static void
 		push_count = magic_partition(stack_1, stack_2, len, instruct);
 		if (stack_1->ref == STACK_A)
 		{
-			magic_quick_sort_rec(stack_1, stack_2, len - push_count, instruct);
+			magic_quick_sort_rec(stack_1, stack_2, len - push_count - 1, instruct);
 			magic_quick_sort_rec(stack_2, stack_1, push_count, instruct);
 		}
 		else
 		{
 			magic_quick_sort_rec(stack_2, stack_1, push_count, instruct);
-			magic_quick_sort_rec(stack_1, stack_2, len - push_count, instruct);
+			magic_quick_sort_rec(stack_1, stack_2, len - push_count - 1, instruct);
 		}
 	}
 }

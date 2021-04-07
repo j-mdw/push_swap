@@ -75,18 +75,20 @@ static void
 	int					i;
 	int					j;
 	int					val;
-	static t_skip_list	skip_list[6] = {
+	static t_skip_list	skip_list[8] = {
 		{SWAP_A, SWAP_B, SWAP_AB, {RU_A, RD_A, SWAP_A}},
 		{SWAP_B, SWAP_A, SWAP_AB, {RU_B, RD_B, SWAP_B}},
 		{RU_A, RU_B, RU_AB, {RU_A, RD_A, SWAP_A}},
 		{RU_B, RU_A, RU_AB, {RU_B, RD_B, SWAP_B}},
 		{RD_A, RD_B, RD_AB, {RD_A, RU_A, SWAP_A}},
-		{RD_B, RD_A, RD_AB, {RD_B, RU_B, SWAP_B}}};
+		{RD_B, RD_A, RD_AB, {RD_B, RU_B, SWAP_B}},
+		{RU_A, RD_A, -1, {RU_B, RD_B, SWAP_B}},
+		{RU_B, RD_B, -1, {RU_A, RD_A, SWAP_A}}};
 
 	i = 0;
 	j = 1;
 	val = arr[0];
-	while (i < 6)
+	while (i < 8)
 	{
 		if (val == (skip_list[i]).val)
 		{
@@ -135,9 +137,9 @@ void
 		// }
 		// else
 		// {
-		// 	instruct_i = instruct->arr[i];
-		// 	printf("%s\n", arr[instruct_i]);
-		// 	i++;
+			// instruct_i = instruct->arr[i];
+			// printf("%s\n", arr[instruct_i]);
+			// i++;
 		// }
 	}
 }
