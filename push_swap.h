@@ -6,7 +6,7 @@
 /*   By: jmaydew <jmaydew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 17:45:17 by jmaydew           #+#    #+#             */
-/*   Updated: 2021/04/04 17:47:09 by jmaydew          ###   ########.fr       */
+/*   Updated: 2021/04/07 14:37:46 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,5 @@ void			ps_sort_stack(t_param *param, int len,
 				void (*ps_sort)(t_param *));
 void			ps_print_instruct(t_dyn_iarr *instruct);
 void			ps_push_a_n(t_stack *stack_a, t_stack *stack_b,
-    			t_dyn_iarr *instruct, int n);
+				t_dyn_iarr *instruct, int n);
 #endif

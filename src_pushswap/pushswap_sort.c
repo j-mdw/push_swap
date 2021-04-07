@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 16:41:40 by jmaydew           #+#    #+#             */
-/*   Updated: 2021/04/04 16:43:06 by jmaydew          ###   ########.fr       */
+/*   Created: 2021/04/07 14:28:53 by jmaydew           #+#    #+#             */
+/*   Updated: 2021/04/07 14:28:58 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int
 	ft_iarr_getindex(int *arr, int len, int val)
 {
 	int i;
-	
+
 	i = 0;
 	while (i < len)
 	{
@@ -66,7 +66,7 @@ void
 	if (!(arr = ft_intarr_dup(param->stack_a->stack,
 	stack_len(param->stack_a))))
 		ps_fatal(param, "");
-	quick_sort(arr, stack_len(param->stack_a));	
+	quick_sort(arr, stack_len(param->stack_a));
 	counter = 0;
 	while (!stack_issort(param->stack_a))
 	{
@@ -96,4 +96,5 @@ void
 		ps_rotate_up(param->stack_a, param->instruct);
 		counter++;
 	}
+	free(arr);
 }

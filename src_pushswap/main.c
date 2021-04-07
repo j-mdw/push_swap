@@ -6,7 +6,7 @@
 /*   By: jmaydew <jmaydew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 16:41:39 by jmaydew           #+#    #+#             */
-/*   Updated: 2021/04/04 17:06:04 by jmaydew          ###   ########.fr       */
+/*   Updated: 2021/04/07 14:34:20 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void
 	while (i < SORT_FUNC_COUNT - algo)
 	{
 		ps_sort_stack(param, len, sort_func[i]);
-		// printf("Algo result (instructions): %d\n", param->instruct->max_i + 1);
+		printf("Instruct count: %d\n", param->instruct->max_i + 1);
 		if (!param->min_instruct->arr || param->min_instruct->max_i >
 		param->instruct->max_i)
 		{
@@ -79,7 +79,7 @@ int
 	instruct.arr = NULL;
 	param.instruct = &instruct;
 	get_best_sort(&param, sort_func, ac - 1);
-	ps_print_instruct(&min_instruct);
+	// ps_print_instruct(&min_instruct);
 	free(param.input);
 	free(min_instruct.arr);
 	return (EXIT_SUCCESS);

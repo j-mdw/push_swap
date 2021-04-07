@@ -6,7 +6,7 @@
 /*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 16:35:15 by jmaydew           #+#    #+#             */
-/*   Updated: 2021/04/04 16:35:15 by jmaydew          ###   ########.fr       */
+/*   Updated: 2021/04/07 14:35:55 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ int
 			return (i);
 		i++;
 	}
-	printf("Value not found: %d\n", val); //To be deleted
 	return (0);
 }
