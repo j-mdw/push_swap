@@ -79,7 +79,6 @@ void
 		}
 		else if (param->stack_a->stack[param->stack_a->top] > param->stack_a->stack[param->stack_a->top + 1]
 		&& ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top]) < mid)
-		// && ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top + 1]) < mid)
 		{
 			ps_swap_top(param->stack_a, param->instruct);
 			mid = len / 2;

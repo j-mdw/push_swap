@@ -21,7 +21,7 @@
 # include "libft.h"
 # include <limits.h>
 
-# define SORT_FUNC_COUNT 5
+# define SORT_FUNC_COUNT 6
 
 # define V_FLAG "-v"
 
@@ -120,7 +120,7 @@ void			stack_ab_print(t_stack *stack_a, t_stack *stack_b);
 
 int				dyn_iarray_init(t_dyn_iarr *dyn_arr, int size);
 int				dyn_iarray_add(t_dyn_iarr *dyn_arr, int val);
-
+void			ps_insertion_sort(t_param *param);
 /*
 ** PUSH SWAP PROGRAM
 */

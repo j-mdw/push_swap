@@ -13,6 +13,70 @@
 #include "push_swap.h"
 
 static int
+	ps_insertionsort(t_stack *stack, t_dyn_iarr *instruct, int len)
+{
+	int i;
+	int j;
+	int *arr;
+
+
+	if (!(arr = ft_intarr_dup(&(stack->stack[stack->top]), stack_len(stack))))
+		return (0);
+	i = 1;
+	while (i < len)
+	{
+		j = i;
+		while (j > 0)
+		{
+			if (arr[j - 1] > arr[j])
+			{
+				ps_swap(stack, instruct, stack_get_index(stack, arr[j]), stack_get_index(stack, arr[j - 1]));
+				ft_swap_int(arr, j, j - 1);
+			}
+			j--;
+		}
+		i++;
+	}
+	ps_rotate_top(stack, instruct, stack_get_index(stack, arr[0]));
+	return (1);
+}
+
+void
+	ps_insertion_sort(t_param *param)
+{
+	if (!ps_insertionsort(param->stack_a, param->instruct, stack_len(param->stack_a)))
+		ps_fatal(param, "");
+}
+static void
+	magic_sort_4(t_stack *stack_1, t_dyn_iarr *instruct, int len)
+{
+	int i;
+	int j;
+	int arr[4];
+
+	i = -1;
+	while (++i < len)
+		arr[i] = stack_1->stack[stack_1->top + i];
+	i = 1;
+	while (i < len)
+	{
+		j = i;
+		while (j > 0)
+		{
+			if ((stack_1->ref == STACK_A && arr[j] < arr[j - 1]) ||
+				(stack_1->ref == STACK_B && arr[j] > arr[j - 1]))
+			{
+				ps_swap(stack_1, instruct, stack_get_index(stack_1, arr[j]), stack_get_index(stack_1, arr[j - 1]));
+				ft_swap_int(arr, j, j - 1);
+			}
+			j--;
+		}
+		i++;
+	}
+	ps_rotate_top(stack_1, instruct, stack_get_index(stack_1, arr[0]));
+}
+
+static int
 	stack_sub_issort(t_stack *stack, int len)
 {
 	int i;
@@ -66,6 +130,8 @@ static void
 		ps_push_a_n(stack_2, stack_1, instruct, len);
 	else if (len == 2)
 		len_2_routine(stack_1, stack_2, instruct);
+	else if (len <= 4)
+		magic_sort_4(stack_1, instruct, len);
 	else
 	{
 		push_count = magic_partition(stack_1, stack_2, len, instruct);
