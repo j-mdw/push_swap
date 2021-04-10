@@ -21,9 +21,11 @@
 # include "libft.h"
 # include <limits.h>
 
-# define SORT_FUNC_COUNT 6
+# define SORT_FUNC_COUNT 1
 
 # define V_FLAG "-v"
+
+# define QS_OPTI 12
 
 # define AVAIL_INSTRUCT 11
 # define SWAP_A 0
@@ -113,7 +115,7 @@ int				stack_len(t_stack *stack);
 int				stack_issort(t_stack *stack);
 int				stack_issort_r(t_stack *stack);
 void			stack_ab_print(t_stack *stack_a, t_stack *stack_b);
-
+int				stack_is_closest(t_stack *stack, int val1, int val2);
 /*
 ** DYNAMIC INT ARR
 */
@@ -124,16 +126,19 @@ void			ps_insertion_sort(t_param *param);
 /*
 ** PUSH SWAP PROGRAM
 */
-
+void			magic_selec_sort_n(t_stack *stack_1, t_stack *stack_2, t_dyn_iarr *instruct, int len);
+void			ps_get_best_sort(int *input, int len,
+				t_dyn_iarr *min_instruct, int fromqs);
 void			ps_fatal(t_param *param, char *error_msg);
 void			ps_bubble_sort(t_param *param);
 void			ps_bubble_sort_v2(t_param *param);
 void			quick_sort(int *arr, int len);
-void			pushswap_sort(t_param *param);
-void			pushswap_sort_v2(t_param *param);
+void			ps_selection_sort(t_param *param);
+void			ps_selection_sort_v2(t_param *param);
 void			magic_quick_sort(t_param *param);
 int				magic_partition(t_stack *stack_1, t_stack *stack_2,
 				int len, t_dyn_iarr *instruct);
+void			ps_insertion_sort(t_param *param);
 int				ps_are_elem_sbs(t_stack *stack, int index1, int index2);
 void			ps_rotate_up(t_stack *stack, t_dyn_iarr *instruct);
 void			ps_rotate_down(t_stack *stack, t_dyn_iarr *instruct);

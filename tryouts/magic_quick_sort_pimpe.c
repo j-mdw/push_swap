@@ -13,12 +13,13 @@
 #include "push_swap.h"
 
 static void
-	magic_sort_4(t_stack *stack_1, t_stack *stack_2, t_dyn_iarr *instruct, int len)
+	magic_sort_n(t_stack *stack_1, t_stack *stack_2, t_dyn_iarr *instruct, int len)
 {
 	int i;
 	int j;
-	int arr[4];
+	int arr[QS_OPTI];
 
+	(void)stack_2;
 	i = -1;
 	while (++i < len)
 		arr[i] = stack_1->stack[stack_1->top + i];
@@ -40,9 +41,8 @@ static void
 		i++;
 	}
 	ps_rotate_top(stack_1, instruct, stack_get_index(stack_1, arr[0]));
-	if (stack_1->ref == STACK_B)
-		ps_push_a_n(stack_2, stack_1, instruct, len);
 }
+
 
 static int
 	stack_sub_issort(t_stack *stack, int len)
@@ -86,6 +86,52 @@ static void
 	}
 }
 
+void
+	stack_cpy(t_stack *src, t_stack *dst)
+{
+	dst->bottom = src->bottom;
+	dst->top = src->top;
+	dst->ref = src->ref;
+	dst->stack = ft_intarr_dup(src->stack, src->bottom);
+}
+
+static void
+	try_sort(t_stack *stack_1, t_stack *stack_2, int len, t_dyn_iarr *instruct)
+{
+	int min;
+	int start_i;
+	t_stack cpy_1;
+	t_stack cpy_2;
+
+	stack_cpy(stack_1, &cpy_1);
+	stack_cpy(stack_2, &cpy_2);
+	if (!cpy_1.stack && !cpy_2.stack)
+	{
+		start_i = instruct->max_i;
+		magic_sort_n(&cpy_1, &cpy_2, instruct, len);
+		min = instruct->max_i;
+		instruct->max_i = start_i;
+		free(cpy_1.stack);
+		free(cpy_2.stack);
+		stack_cpy(stack_1, &cpy_1);
+		stack_cpy(stack_2, &cpy_2);
+		if (!cpy_1.stack && !cpy_2.stack)
+		{	
+			magic_selec_sort_n(&cpy_1, &cpy_2, instruct, len);
+			free(cpy_1.stack);
+			free(cpy_2.stack);
+			if (instruct->max_i > min)
+			{
+				instruct->max_i = start_i;
+				magic_sort_n(stack_1, stack_2, instruct, len);
+				if (stack_1->ref == STACK_B)
+					ps_push_a_n(stack_2, stack_1, instruct, len);
+			}
+		}
+	}
+	magic_selec_sort_n(stack_1, stack_2, instruct, len);
+}
+
 static void
 	magic_quick_sort_rec(t_stack *stack_1, t_stack *stack_2,
 	int len, t_dyn_iarr *instruct)
@@ -98,8 +144,10 @@ static void
 		ps_push_a_n(stack_2, stack_1, instruct, len);
 	else if (len == 2)
 		len_2_routine(stack_1, stack_2, instruct);
-	else if (len <= 4)
-		magic_sort_4(stack_1, stack_2, instruct, len);
+	else if (len <= QS_OPTI)
+		try_sort(stack_1, stack_2, len, instruct);
+		// magic_sort_4(stack_1, stack_2, instruct, len);
+
 	else
 	{
 		p = magic_partition(stack_1, stack_2, len, instruct);

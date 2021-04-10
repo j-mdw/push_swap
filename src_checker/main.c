@@ -17,7 +17,7 @@ static int
 {
 	exec_instructions(stack_a, stack_b, flag);
 	if (ft_isintarr_sort(&stack_a->stack[stack_a->top],
-		stack_a->bottom - stack_a->top))
+		stack_len(stack_a)) && stack_len(stack_b) == 0)
 		printf("OK\n");
 	else
 		printf("KO\n");

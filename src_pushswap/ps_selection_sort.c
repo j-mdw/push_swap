@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap_sort.c                                    :+:      :+:    :+:   */
+/*   ps_selection_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 void
-	pushswap_sort(t_param *param)
+	ps_selection_sort(t_param *param)
 {
 	int *arr;
 	int i;
@@ -54,7 +54,7 @@ int
 }
 
 void
-	pushswap_sort_v2(t_param *param)
+	ps_selection_sort_v2(t_param *param)
 {
 	int len;
 	int mid;

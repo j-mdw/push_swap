@@ -31,6 +31,7 @@ void
 		ps_fatal(param, "stack init");
 	if (!dyn_iarray_init(param->instruct, len * 2))
 		ps_fatal(param, "Dyn arr init error");
+	// printf("ps_sort_stack\n");
 	ps_sort(param);
 	free(stack_a.stack);
 	param->stack_a = NULL;
