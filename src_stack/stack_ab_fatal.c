@@ -17,6 +17,7 @@ void
 {
 	free(stack_a->stack);
 	free(stack_b->stack);
-	dprintf(STDERR_FILENO, "Error: %s\n", error_msg);
+	(void)error_msg;
+	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }

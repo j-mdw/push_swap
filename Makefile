@@ -44,7 +44,8 @@ STACK_FILES_C = stack_push.c stack_pop.c stack_swap_top_two.c \
 				stack_rotate_up.c stack_print.c stack_init.c \
 				stack_rotate_down.c stack_ab_init.c stack_ab_fatal.c \
 				stack_get_index.c stack_len.c stack_issort.c \
-				stack_ab_print.c stack_issort_r.c stack_is_closest.c
+				stack_ab_print.c stack_issort_r.c stack_is_closest.c \
+				stack_sub_issort.c stack_sub_issort_r.c
 
 STACK_FILES_O = $(addprefix $(STACK_DIR_O), $(STACK_FILES_C:c=o))
 

@@ -6,7 +6,7 @@
 /*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 16:41:40 by jmaydew           #+#    #+#             */
-/*   Updated: 2021/04/04 16:42:07 by jmaydew          ###   ########.fr       */
+/*   Updated: 2021/04/10 23:28:37 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void
 		ps_fatal(param, "stack init");
 	if (!dyn_iarray_init(param->instruct, len * 2))
 		ps_fatal(param, "Dyn arr init error");
-	// printf("ps_sort_stack\n");
 	ps_sort(param);
 	free(stack_a.stack);
 	param->stack_a = NULL;

@@ -21,10 +21,10 @@ int
 	av++;
 	if (!(input = parse_iarr_input(av, ac - 1)))
 	{
-		ft_putstr_fd("Error", STDERR_FILENO);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
-	ps_get_best_sort(input, ac - 1, &min_instruct, 0);
+	ps_get_best_sort(input, ac - 1, &min_instruct);
 	ps_print_instruct(&min_instruct);
 	free(min_instruct.arr);
 	free(input);

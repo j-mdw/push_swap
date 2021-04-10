@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_selection_sort.c                                    :+:      :+:    :+:   */
+/*   ps_selection_sort.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 14:28:53 by jmaydew           #+#    #+#             */
-/*   Updated: 2021/04/07 14:28:58 by jmaydew          ###   ########.fr       */
+/*   Updated: 2021/04/10 23:28:16 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,49 +51,4 @@ int
 		i++;
 	}
 	return (0);
-}
-
-void
-	ps_selection_sort_v2(t_param *param)
-{
-	int len;
-	int mid;
-	int *arr;
-	int counter;
-
-	len = param->stack_a->bottom - param->stack_a->top;
-	mid = len / 2;
-	if (!(arr = ft_intarr_dup(param->stack_a->stack,
-	stack_len(param->stack_a))))
-		ps_fatal(param, "");
-	quick_sort(arr, stack_len(param->stack_a));
-	counter = 0;
-	while (!stack_issort(param->stack_a))
-	{
-		if (param->stack_a->stack[param->stack_a->top] > param->stack_a->stack[param->stack_a->top + 1]
-		&& ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top + 1]) >= mid)
-		{
-			ps_swap_top(param->stack_a, param->instruct);
-			mid = len / 2;
-			counter = 0;
-		}
-		else if (param->stack_a->stack[param->stack_a->top] > param->stack_a->stack[param->stack_a->top + 1]
-		&& ft_iarr_getindex(arr, len, param->stack_a->stack[param->stack_a->top]) < mid)
-		{
-			ps_swap_top(param->stack_a, param->instruct);
-			mid = len / 2;
-			counter = 0;
-		}
-		else if (counter == len)
-		{
-			mid--;
-			counter = 0;
-			ps_rotate_top(param->stack_a, param->instruct, mid - 1 + param->stack_a->top);
-		}
-		if (stack_issort(param->stack_a))
-			break ;
-		ps_rotate_up(param->stack_a, param->instruct);
-		counter++;
-	}
-	free(arr);
 }

@@ -6,7 +6,7 @@
 /*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 15:32:08 by jmaydew           #+#    #+#             */
-/*   Updated: 2021/04/04 15:32:10 by jmaydew          ###   ########.fr       */
+/*   Updated: 2021/04/10 23:51:53 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ void
 	{
 		i = 0;
 		while (i < len)
-			printf("|%d", arr[i++]);
-		printf("|\n");
+		{
+			ft_putchar_fd('|', 1);
+			ft_putnbr_fd(arr[i], 1);
+			i++;
+		}
+		ft_putstr_fd("|\n", 1);
 	}
-	printf("\n");
+	ft_putchar_fd('\n', 1);
 }

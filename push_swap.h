@@ -6,7 +6,7 @@
 /*   By: jmaydew <jmaydew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 17:45:17 by jmaydew           #+#    #+#             */
-/*   Updated: 2021/04/07 14:37:46 by jmaydew          ###   ########.fr       */
+/*   Updated: 2021/04/10 11:34:08 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@
 # include "libft.h"
 # include <limits.h>
 
-# define SORT_FUNC_COUNT 1
+# define SORT_FUNC_COUNT 5
 
 # define V_FLAG "-v"
-
-# define QS_OPTI 12
 
 # define AVAIL_INSTRUCT 11
 # define SWAP_A 0
@@ -76,6 +74,13 @@ typedef	struct	s_stack_func {
 	void	(*stack_func)(t_stack *stack_a, t_stack *stack_b);
 }				t_stack_func;
 
+typedef struct	s_skip_list {
+	int		val;
+	int		find;
+	int		new;
+	int		arr[3];
+}				t_skip_list;
+
 /*
 ** CHECKER
 */
@@ -116,6 +121,8 @@ int				stack_issort(t_stack *stack);
 int				stack_issort_r(t_stack *stack);
 void			stack_ab_print(t_stack *stack_a, t_stack *stack_b);
 int				stack_is_closest(t_stack *stack, int val1, int val2);
+int				stack_sub_issort(t_stack *stack, int len);
+int				stack_sub_issort_r(t_stack *stack, int len);
 /*
 ** DYNAMIC INT ARR
 */
@@ -126,9 +133,10 @@ void			ps_insertion_sort(t_param *param);
 /*
 ** PUSH SWAP PROGRAM
 */
-void			magic_selec_sort_n(t_stack *stack_1, t_stack *stack_2, t_dyn_iarr *instruct, int len);
+void			magic_selec_sort_n(t_stack *stack_1, t_stack *stack_2,
+				t_dyn_iarr *instruct, int len);
 void			ps_get_best_sort(int *input, int len,
-				t_dyn_iarr *min_instruct, int fromqs);
+				t_dyn_iarr *min_instruct);
 void			ps_fatal(t_param *param, char *error_msg);
 void			ps_bubble_sort(t_param *param);
 void			ps_bubble_sort_v2(t_param *param);

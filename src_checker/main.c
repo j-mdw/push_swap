@@ -34,18 +34,15 @@ int
 
 	av++;
 	flag = 0;
-	if (ac <= 1)
-	{
-		dprintf(STDERR_FILENO, "Error - No input\n");
-		return (EXIT_FAILURE);
-	}
+	if (ac == 1)
+		return (0);
 	if (!ft_strcmp(*av, V_FLAG))
 	{
 		flag |= 1;
 		av++;
 	}
 	if ((ret = input_isintarr(ac - 1 - flag, av)) != -1)
-		dprintf(STDERR_FILENO, "Error: Input '%s': not a number\n", av[ret]);
+		ft_putstr_fd("Error\n", 2);
 	else
 	{
 		stack_ab_init(&stack_a, &stack_b, av, ac - 1 - flag);

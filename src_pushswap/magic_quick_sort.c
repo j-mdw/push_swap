@@ -13,15 +13,27 @@
 #include "push_swap.h"
 
 static void
-	magic_sort_4(t_stack *stack_1, t_stack *stack_2, t_dyn_iarr *instruct, int len)
+	ft_iarr_cpy(int *src, int *dst, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+}
+
+static void
+	magic_sort_4(t_stack *stack_1, t_stack *stack_2, t_dyn_iarr *instruct,
+	int len)
 {
 	int i;
 	int j;
 	int arr[4];
 
-	i = -1;
-	while (++i < len)
-		arr[i] = stack_1->stack[stack_1->top + i];
+	ft_iarr_cpy(&(stack_1->stack[stack_1->top]), arr, len);
 	i = 1;
 	while (i < len)
 	{
@@ -42,36 +54,6 @@ static void
 	ps_rotate_top(stack_1, instruct, stack_get_index(stack_1, arr[0]));
 	if (stack_1->ref == STACK_B)
 		ps_push_a_n(stack_2, stack_1, instruct, len);
-}
-
-static int
-	stack_sub_issort(t_stack *stack, int len)
-{
-	int i;
-
-	i = stack->top;
-	while (i < (stack->top + len - 1))
-	{
-		if (stack->stack[i] > stack->stack[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static int
-	stack_sub_issort_r(t_stack *stack, int len)
-{
-	int i;
-
-	i = stack->top;
-	while (i < (stack->top + len - 1))
-	{
-		if (stack->stack[i] < stack->stack[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 static void

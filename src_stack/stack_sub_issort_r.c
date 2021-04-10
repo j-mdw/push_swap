@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_fatal.c                                         :+:      :+:    :+:   */
+/*   stack_sub_issort_r.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaydew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 16:41:40 by jmaydew           #+#    #+#             */
-/*   Updated: 2021/04/04 16:41:40 by jmaydew          ###   ########.fr       */
+/*   Created: 2021/04/10 23:29:29 by jmaydew           #+#    #+#             */
+/*   Updated: 2021/04/10 23:29:31 by jmaydew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void
-	ps_fatal(t_param *param, char *error_msg)
+int
+	stack_sub_issort_r(t_stack *stack, int len)
 {
-	if (param->input)
-		free(param->input);
-	if (param->instruct)
-		free(param->instruct->arr);
-	if (param->min_instruct)
-		free(param->min_instruct->arr);
-	if (param->stack_a)
-		free(param->stack_a->stack);
-	if (param->stack_b)
-		free(param->stack_b->stack);
-	(void)error_msg;
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
+	int i;
+
+	i = stack->top;
+	while (i < (stack->top + len - 1))
+	{
+		if (stack->stack[i] < stack->stack[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }
