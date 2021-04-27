@@ -31,7 +31,7 @@ static int
 			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 int
@@ -42,7 +42,7 @@ int
 	int *arr;
 	int overflow;
 
-	if (ps_input_isintarr(size, input) != 0)
+	if (ps_input_isintarr(size, input) != -1)
 		return (NULL);
 	if (!(arr = (int *)malloc(sizeof(int) * size)))
 		return (NULL);
